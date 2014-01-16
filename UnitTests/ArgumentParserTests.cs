@@ -14,6 +14,7 @@ namespace BHI.JewelSuite.tools.tfsblame.unittests
             var expected = "john.cs";
             String[] arguments = {"/noprompt", expected};
             var actual = parser.getFile();
+            parser.Parse(arguments);
             Assert.AreEqual(expected,actual);
         }
 
