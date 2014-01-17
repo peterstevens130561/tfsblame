@@ -7,7 +7,7 @@
     <ProjectGuid>{ACD134A2-4E82-4784-98E0-9AD4FA40B275}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BHI.JewelSuite.tools.tfsblame</RootNamespace>
+    <RootNamespace>BHI.JewelSuite.Tools.TfsBlame</RootNamespace>
     <AssemblyName>tfsblame</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -53,6 +53,7 @@
     <Compile Include="ICommits.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TfsBlameException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

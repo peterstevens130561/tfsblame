@@ -24,7 +24,7 @@
 // =============================================================================
 using System;
 
-namespace BHI.JewelSuite.tools.tfsblame
+namespace BHI.JewelSuite.Tools.TfsBlame
 {
     public interface ICommits
     {

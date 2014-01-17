@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BHI.JewelSuite.tools.tfsblame.unittests
+namespace BHI.JewelSuite.Tools.TfsBlame.unittests
 {
     [TestClass]
     public class CommitTest

@@ -1,6 +1,6 @@
 ﻿// =============================================================================
 // =
-// =   FILE:		ArgumentParser.cs
+// = FILE: ArgumentParser.cs
 // =
 // =============================================================================
 // =                                                                        
@@ -23,25 +23,25 @@
 // =                                                                          
 // =============================================================================
 using System;
+using Microsoft.TeamFoundation.Common.Internal;
 
-namespace BHI.JewelSuite.tools.tfsblame
+namespace BHI.JewelSuite.Tools.TfsBlame
 {
     public class ArgumentParser
     {
-        private string file;
-        public void Parse(String[] arguments)
+        public string File { get; private set; }
+
+        public void Parse(string[] arguments)
         {
             foreach (var argument in arguments)
             {
                 if (!argument.Equals("/noprompt"))
                 {
-                    file = argument;
+                    File = argument;
                 }
             }
         }
-        public String getFile()
-        {
-            return file;
-        }
+
+
     }
 }

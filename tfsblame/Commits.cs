@@ -1,6 +1,6 @@
 ﻿// =============================================================================
 // =
-// =   FILE:		Commits.cs
+// = FILE: Commits.cs
 // =
 // =============================================================================
 // =                                                                        
@@ -28,12 +28,12 @@ using System.Collections.Generic;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.VersionControl.Client;
 
-namespace BHI.JewelSuite.tools.tfsblame
+namespace BHI.JewelSuite.Tools.TfsBlame
 {
-    class Commits : ICommits
+    public class Commits : ICommits
     {
 
-        VersionControlServer versionControlServer;
+        private VersionControlServer versionControlServer;
 
         public String serverUri { get; set; }
         private IDictionary<int, Commit> commits = new Dictionary<int, Commit>();
@@ -60,14 +60,16 @@ namespace BHI.JewelSuite.tools.tfsblame
         }
 
 
-  
+
         public virtual void Connect()
         {
             WorkspaceInfo wi = Workstation.Current.GetLocalWorkspaceInfo(Environment.CurrentDirectory);
-            TfsTeamProjectCollection tfs = new TfsTeamProjectCollection(wi.ServerUri);
-            //TfsTeamProjectCollection tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri(serverUri));
-            versionControlServer = tfs.GetService<VersionControlServer>();
-        }
+            using (var tfs = new TfsTeamProjectCollection(wi.ServerUri))
+            {
+                versionControlServer = tfs.GetService<VersionControlServer>();
+            }
 
+        }
     }
+
 }

@@ -1,6 +1,6 @@
 ﻿// =============================================================================
 // =
-// =   FILE:		BlameTest.cs
+// = FILE: BlameTest.cs
 // =
 // =============================================================================
 // =                                                                        
@@ -26,7 +26,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace BHI.JewelSuite.tools.tfsblame.unittests
+namespace BHI.JewelSuite.Tools.TfsBlame.unittests
 {
     /// <summary>
     /// Summary description for BlameTest

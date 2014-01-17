@@ -25,7 +25,7 @@ using Microsoft.TeamFoundation.VersionControl.Client;
 // = wholly-owned subsidiary of Baker Hughes Incorporated 
 // =                                                                          
 // =============================================================================
-namespace BHI.JewelSuite.tools.tfsblame
+namespace BHI.JewelSuite.Tools.TfsBlame
 {
     internal class Commit
     {

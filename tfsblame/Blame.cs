@@ -27,10 +27,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Diagnostics ;
 
-namespace BHI.JewelSuite.tools.tfsblame
+namespace BHI.JewelSuite.Tools.TfsBlame
 {
 
-    class Blame
+    public class Blame
     {
         private ICommits commits = new Commits();
 
@@ -62,12 +62,11 @@ namespace BHI.JewelSuite.tools.tfsblame
                 myProcess.Start();
                 myProcess.BeginOutputReadLine();
                 myProcess.BeginErrorReadLine();
-                //myProcess.Start();
                 myProcess.WaitForExit();
                 int exitCode=myProcess.ExitCode;
                 if (exitCode > 0)
                 {
-                    throw new ApplicationException(standardError.ToString());
+                    throw new TfsBlameException(standardError.ToString());
                 }
             }
             return standardOutput.ToString();
@@ -77,8 +76,8 @@ namespace BHI.JewelSuite.tools.tfsblame
 
         public String DecorateLine(String line)
         {
-            String changeSetpattern = "^[0-9]+";
-            String beforeLinePattern = changeSetpattern + "\\s+";
+            var changeSetpattern = "^[0-9]+";
+            var beforeLinePattern = changeSetpattern + "\\s+";
             if (line == null)
             {
                 return String.Empty;
@@ -89,10 +88,10 @@ namespace BHI.JewelSuite.tools.tfsblame
                 return String.Empty;
             }
 
-            String changesetKey = matches[0].Value;
+            var changesetKey = matches[0].Value;
             int changesetId = Convert.ToInt32(changesetKey);
-            String formattedCommit = commits.GetFormattedCommit(changesetId);
-            String lineWithoutChangesetId = Regex.Replace(line, beforeLinePattern, "");
+            var formattedCommit = commits.GetFormattedCommit(changesetId);
+            var lineWithoutChangesetId = Regex.Replace(line, beforeLinePattern, "");
             return formattedCommit  + " " + lineWithoutChangesetId;
         }
     }

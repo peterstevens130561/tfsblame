@@ -1,6 +1,6 @@
 ﻿// =============================================================================
 // =
-// =   FILE:		ArgumentParserTests.cs
+// = FILE: ArgumentParserTests.cs
 // =
 // =============================================================================
 // =                                                                        
@@ -25,7 +25,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BHI.JewelSuite.tools.tfsblame.unittests
+namespace BHI.JewelSuite.Tools.TfsBlame.unittests
 {
     [TestClass]
     public class ArgumentParserTests
@@ -35,9 +35,9 @@ namespace BHI.JewelSuite.tools.tfsblame.unittests
         {
             ArgumentParser parser = new ArgumentParser();
             var expected = "john.cs";
-            String[] arguments = {"/noprompt", expected};
+            string[] arguments = {"/noprompt", expected};
             parser.Parse(arguments);
-            var actual = parser.getFile();
+            var actual = parser.File;
             Assert.AreEqual(expected,actual);
         }
 
@@ -46,9 +46,9 @@ namespace BHI.JewelSuite.tools.tfsblame.unittests
         {
             ArgumentParser parser = new ArgumentParser();
             var expected = "john.cs";
-            String[] arguments = { expected };
+            string[] arguments = { expected };
             parser.Parse(arguments);
-            var actual = parser.getFile();
+            var actual = parser.File;
             Assert.AreEqual(expected, actual);
         }
     }

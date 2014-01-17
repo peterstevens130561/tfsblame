@@ -1,6 +1,6 @@
 ﻿// =============================================================================
 // =
-// =   FILE:		Program.cs
+// = FILE: Program.cs
 // =
 // =============================================================================
 // =                                                                        
@@ -24,15 +24,27 @@
 // =============================================================================
 using System;
 
-namespace BHI.JewelSuite.tools.tfsblame
+namespace BHI.JewelSuite.Tools.TfsBlame
 {
     class Program
     {
         static void Main(string[] args)
         {
+            try
+            {
+                TryBlame(args);
+            } catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+
+        }
+
+        static private void TryBlame(string[] args)
+        {
             ArgumentParser parser = new ArgumentParser();
             parser.Parse(args);
-            String file = parser.getFile();
+            String file = parser.File;
             Commits commits = new Commits();
             commits.Connect();
             Blame blame = new Blame(commits);
