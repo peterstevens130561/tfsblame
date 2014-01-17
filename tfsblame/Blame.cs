@@ -23,6 +23,7 @@
 // =                                                                          
 // =============================================================================
 using System;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Diagnostics ;
@@ -89,7 +90,7 @@ namespace BHI.JewelSuite.Tools.TfsBlame
             }
 
             var changesetKey = matches[0].Value;
-            int changesetId = Convert.ToInt32(changesetKey);
+            int changesetId = Convert.ToInt32(changesetKey,CultureInfo.InvariantCulture);
             var formattedCommit = commits.GetFormattedCommit(changesetId);
             var lineWithoutChangesetId = Regex.Replace(line, beforeLinePattern, "");
             return formattedCommit  + " " + lineWithoutChangesetId;

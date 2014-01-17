@@ -35,7 +35,7 @@ namespace BHI.JewelSuite.Tools.TfsBlame
 
         private VersionControlServer versionControlServer;
 
-        public String serverUri { get; set; }
+        public string serverUri { get; set; }
         private IDictionary<int, Commit> commits = new Dictionary<int, Commit>();
 
         public Commits()

@@ -28,8 +28,8 @@ namespace BHI.JewelSuite.Tools.TfsBlame
 {
     public interface ICommits
     {
-        String  GetFormattedCommit(int changesetId);
-        String serverUri { get; set; }
+        string  GetFormattedCommit(int changesetId);
+        string serverUri { get; set; }
         void Connect();
     }
 }
