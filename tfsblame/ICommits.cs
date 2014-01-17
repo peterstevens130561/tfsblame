@@ -1,6 +1,6 @@
 ﻿// =============================================================================
 // =
-// =   FILE:		ArgumentParser.cs
+// =   FILE:		ICommits.cs
 // =
 // =============================================================================
 // =                                                                        
@@ -26,22 +26,10 @@ using System;
 
 namespace BHI.JewelSuite.tools.tfsblame
 {
-    public class ArgumentParser
+    public interface ICommits
     {
-        private string file;
-        public void Parse(String[] arguments)
-        {
-            foreach (var argument in arguments)
-            {
-                if (!argument.Equals("/noprompt"))
-                {
-                    file = argument;
-                }
-            }
-        }
-        public String getFile()
-        {
-            return file;
-        }
+        String  GetFormattedCommit(int changesetId);
+        String serverUri { get; set; }
+        void Connect();
     }
 }

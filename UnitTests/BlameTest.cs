@@ -1,9 +1,31 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
+﻿// =============================================================================
+// =
+// =   FILE:		BlameTest.cs
+// =
+// =============================================================================
+// =                                                                        
+// = COPYRIGHT: Title to, ownership of and copyright of this software is
+// = vested in Copyright 2003-2013  Baker Hughes Reservoir Software BV.
+// = is a wholly-owned subsidiary of Baker Hughes Incorporated.
+// = All rights reserved.
+// =
+// = Neither the whole nor any part of this software may be
+// = reproduced, copied, stored in any retrieval system or
+// = transmitted in any form or by any means without prior
+// = written consent of the copyright owner.
+// =
+// = This software and the information and data it contains is
+// = confidential. Neither the whole nor any part of the
+// = software and the data and information it contains may be
+// = disclosed to any third party without the prior written
+// = consent of Copyright 2003-2013 Baker Hughes Reservoir Software BV, a
+// = wholly-owned subsidiary of Baker Hughes Incorporated 
+// =                                                                          
+// =============================================================================
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using tfsblame;
+
 namespace BHI.JewelSuite.tools.tfsblame.unittests
 {
     /// <summary>
@@ -12,47 +34,27 @@ namespace BHI.JewelSuite.tools.tfsblame.unittests
     [TestClass]
     public class BlameTest
     {
-        public BlameTest()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
 
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
 
         [TestMethod]
-        public void DecorateLineTest()
+        public void DecorateLineTestShouldHaveFormatAsRequiredByScmActivity()
         {
-            var commitsMock = new Mock<Commits>();
-            var commits = commitsMock.Object;
-            String expectedCommit="12345 Peter Stevens 2014-01-01";
+            var commitsMock = new Mock<ICommits>();
+            ICommits commits = commitsMock.Object;
+            // scm activity expects the sequence to be as shown below
+            String expectedCommit="12345 PeterStevens 2014-01-01";
             commitsMock.Setup(instance => instance.GetFormattedCommit(12345)).Returns(expectedCommit);
             Blame blame = new Blame(commits);
             String expectedLine = expectedCommit + " MyOriginalTest";
             String decoratedLine=blame.DecorateLine("12345 MyOriginalTest");
             Assert.AreEqual(expectedLine,decoratedLine);
+        }
+
+        public void TestBlame()
+        {
+            Blame blame = new Blame();
+            String result = blame.RunAnnotate("joker");
+            Assert.IsNotNull(result);
         }
     }
 }

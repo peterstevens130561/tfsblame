@@ -47,10 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgumentParser.cs" />
-    <Compile Include="ChangeSets.cs" />
     <Compile Include="Commit.cs" />
     <Compile Include="Commits.cs" />
     <Compile Include="Blame.cs" />
+    <Compile Include="ICommits.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
